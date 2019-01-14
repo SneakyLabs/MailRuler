@@ -2,25 +2,11 @@ package martinfrancois;
 
 import com.google.common.base.Throwables;
 import com.sun.mail.imap.IMAPFolder;
-import java.util.Date;
-import java.util.Properties;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
-import javax.mail.BodyPart;
-import javax.mail.Flags;
 import javax.mail.Folder;
-import javax.mail.Message;
 import javax.mail.MessagingException;
-import javax.mail.Multipart;
 import javax.mail.NoSuchProviderException;
-import javax.mail.Session;
-import javax.mail.Store;
-import javax.mail.Transport;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeBodyPart;
-import javax.mail.internet.MimeMessage;
-import javax.mail.internet.MimeMultipart;
-import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -81,28 +67,28 @@ public class EmailHandler {
         Connection imap = new Connection(hostImap, username, password);
         Connection smtp = new Connection(hostSmtp, username, password);
 
-        Settings settings = new Settings(imap, smtp, recipient);
+        Account account = new Account(imap, smtp, recipient);
 
-        moveSpam(settings);
+        moveSpam(account);
       }
     }
 
   }
 
-  private static void moveSpam(Settings settings) {
-    LOGGER.info("Trying to connect to host: " + settings.imap.host + " with user: " + settings.imap.username);
+  private static void moveSpam(Account account) {
+    LOGGER.info("Trying to connect to host: " + account.imap.host + " with user: " + account.imap.username);
     try {
-      connect(settings.imap, settings.smtp);
+      connect(account.imap, account.smtp);
 
       //open the folders
-      IMAPFolder junk = getFolder(settings.imap.store, "Junk");
-      IMAPFolder inbox = getFolder(settings.imap.store, "Inbox");
+      IMAPFolder junk = getFolder(account.imap.store, "Junk");
+      IMAPFolder inbox = getFolder(account.imap.store, "Inbox");
       LOGGER.trace("Folders opened");
 
-      boolean successful = moveMessages(junk, inbox, null, settings);
+      boolean successful = moveMessages(junk, inbox, null, account);
       LOGGER.info("Success: " + successful);
 
-      settings.imap.store.close();
+      account.imap.store.close();
     } catch (NoSuchProviderException nspe) {
       LOGGER.error("NoSuchProviderException: " + nspe.toString());
       LOGGER_EXCEPTION.debug(Throwables.getStackTraceAsString(nspe));
@@ -127,37 +113,6 @@ public class EmailHandler {
       }
     } while (attempt < threshold && (actual != expected));
     return attempt != threshold;
-  }
-
-
-  private static class Connection {
-    String host;
-    String username;
-    String password;
-    Properties prop;
-    Session session;
-    Store store;
-
-    public Connection(String host, String username, String password) {
-      this.host = host;
-      this.username = username;
-      this.password = password;
-    }
-  }
-
-  private static class Settings {
-    private static final String SUBJECT_PREFIX = "[SPAM] ";
-    Connection imap;
-    Connection smtp;
-    IMAPFolder from;
-    IMAPFolder to;
-    String recipient;
-
-    public Settings(Connection imap, Connection smtp, String recipient) {
-      this.imap = imap;
-      this.smtp = smtp;
-      this.recipient = recipient;
-    }
   }
 
 
