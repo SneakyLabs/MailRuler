@@ -1,7 +1,4 @@
-package martinfrancois;
-
-import com.sun.mail.imap.IMAPFolder;
-import martinfrancois.Connection;
+package sneakylabs;
 
 public class Account {
   Connection imap;

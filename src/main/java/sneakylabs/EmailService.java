@@ -1,4 +1,4 @@
-package martinfrancois;
+package sneakylabs;
 
 import com.google.common.base.Throwables;
 import com.sun.mail.imap.IMAPFolder;

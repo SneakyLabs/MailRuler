@@ -1,4 +1,4 @@
-package martinfrancois;
+package sneakylabs;
 
 import java.util.Properties;
 import javax.mail.Session;

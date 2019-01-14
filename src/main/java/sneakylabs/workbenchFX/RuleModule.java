@@ -1,4 +1,4 @@
-package martinfrancois.workbenchFX;
+package sneakylabs.workbenchFX;
 
 import com.dlsc.workbenchfx.model.WorkbenchModule;
 import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIcon;

@@ -1,12 +1,5 @@
-package martinfrancois;
+package sneakylabs;
 
-import com.google.common.base.Throwables;
-import com.sun.mail.imap.IMAPFolder;
-import java.util.Scanner;
-import java.util.concurrent.TimeUnit;
-import javax.mail.Folder;
-import javax.mail.MessagingException;
-import javax.mail.NoSuchProviderException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

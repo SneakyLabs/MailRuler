@@ -1,12 +1,12 @@
-package martinfrancois;
+package sneakylabs;
 
 import com.dlsc.workbenchfx.Workbench;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import martinfrancois.workbenchFX.LogModule;
-import martinfrancois.workbenchFX.RuleModule;
-import martinfrancois.workbenchFX.SettingsModule;
+import sneakylabs.workbenchFX.LogModule;
+import sneakylabs.workbenchFX.RuleModule;
+import sneakylabs.workbenchFX.SettingsModule;
 
 public class AppStarter extends Application {
 

@@ -1,8 +1,7 @@
-package martinfrancois;
+package sneakylabs;
 
 import static org.junit.Assert.assertEquals;
 
-import martinfrancois.SecurePreferences;
 import org.junit.Test;
 
 /**
