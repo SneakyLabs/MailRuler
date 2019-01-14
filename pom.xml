@@ -49,6 +49,12 @@
     </build>
 
     <dependencies>
+        <dependency>
+            <groupId>com.dlsc.workbenchfx</groupId>
+            <artifactId>workbenchfx-core</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+
         <!-- JavaMail API -->
         <dependency>
             <groupId>com.sun.mail</groupId>
