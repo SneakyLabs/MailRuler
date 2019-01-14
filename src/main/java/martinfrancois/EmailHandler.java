@@ -21,7 +21,7 @@ public class EmailHandler {
   private static final Logger LOGGER_EMAILS = LogManager.getLogger("Emails");
   private static final Logger LOGGER_EXCEPTION = LogManager.getLogger("Exception");
   private static final SecurePreferences pref = new SecurePreferences();
-
+/*
   public static void main(String[] args) {
     int numOfAccounts = 0;
     String recipient = "";
@@ -114,6 +114,6 @@ public class EmailHandler {
     } while (attempt < threshold && (actual != expected));
     return attempt != threshold;
   }
-
+*/
 
 }
