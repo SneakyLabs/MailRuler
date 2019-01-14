@@ -20,4 +20,4 @@ public class Connection {
     this.username = username;
     this.password = password;
   }
-}$
+}
